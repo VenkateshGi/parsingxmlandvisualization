@@ -11,22 +11,17 @@ class Parser:
 		self.cleanBody = self.getCleanedBody()
 
 	def __str__(self):
-		#print ID, Question/Answer/Others, creation date, the main content
-		#write your code here
 		return """ ID : {} \n Post Type : {}\n Date Quarter : {}\n Clean Body : {}\n"""\
 		.format(self.ID, self.type, self.dateQuarter,self.cleanBody)
 
 	def getID(self):
-		#write your code here
 		return re.search("Id=\"(\d+)\"",self.inputString).group(1)
 
 
 	def getPostType(self):
-		#write your code here
 		return re.search("PostTypeId=\"(\d+)\"",self.inputString).group(1)
 
 	def getDateQuarter(self):
-		#write your code here
 		CreationDate = re.search("CreationDate=\"(\d+)-(\d+)",self.inputString)
 		year = CreationDate.group(1)
 		month = int(CreationDate.group(2))
@@ -42,14 +37,13 @@ class Parser:
 
 
 	def getCleanedBody(self):
-		#write your code here
+		
 		return preprocessLine(self.inputString)
 
 
 	def getVocabularySize(self):
-		#write your code here
 		vocabulary = self.cleanBody.lower()
 		for i in punctuations:
 			vocabulary.replace(i," ")
-		#print(vocabulary)
+		print(vocabulary)
 		return len(set(vocabulary.split()))
