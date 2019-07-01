@@ -9,8 +9,6 @@ tag_mapping = {
 "&#xD;" : " "
 }
 def preprocessLine(inputLine):
-	#preprocess the data in each line
-	#write your code here
 	for key,value in tag_mapping.items():
 		inputLine = inputLine.replace(key,value)
 	inputLine = re.search("Body=\"(.*)\"",inputLine).group(1)
@@ -26,9 +24,6 @@ def preprocessLine(inputLine):
 	return outputLine
 
 def splitFile(inputFile, outputFile_question, outputFile_answer):
-	#preprocess the original file, and split them into two files.
-	#please call preprocessLine() function within this function
-	#write you code here
 	raw_text = open(inputFile).read()
 	questions = open(outputFile_question,"w")
 	answers = open(outputFile_answer,"w")
